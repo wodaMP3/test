@@ -1,0 +1,170 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    background-image: url('background.png');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+}
+
+.model-left, .model-right {
+    position: absolute;
+    bottom: 0;
+    display: block;
+}
+
+.model-left {
+    left: 0;
+}
+
+.model-right {
+    right: 0;
+}
+
+.model-left img, .model-right img {
+    max-height: 90vh;
+    object-fit: contain;
+}
+
+.content {
+    text-align: center;
+    z-index: 2;
+    color: white;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    padding: 20px;
+}
+
+h1 {
+    background: linear-gradient(103.39deg, #FFE53B -32.17%, #FF2525 114.07%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    font-weight: bold;
+    font-size: 3rem;
+    position: relative;
+    -webkit-text-stroke: 1px #FFFFFF;
+    text-stroke: 1px #FFFFFF;
+    margin: 0;
+}
+
+p {
+    margin: 20px 0;
+    font-size: 1.2rem;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+button {
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.no-thanks {
+    background-color: gray;
+    color: white;
+}
+
+.continue {
+    background: linear-gradient(103.39deg, #FFE53B -32.17%, #FF2525 114.07%);
+    color: white;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+/* Адаптивные стили для планшетов и маленьких экранов */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    p {
+        font-size: 1rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+    }
+
+    .model-left img, .model-right img {
+        max-height: 50vh;
+    }
+
+    .content {
+        margin-bottom: 20vh;
+    }
+}
+
+/* Адаптация для мобильных устройств */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px; /* Добавляем отступы */
+        flex-direction: column;
+        justify-content: space-between; /* Располагаем элементы сверху и снизу */
+    }
+
+    .model-left {
+        display: none; /* Скрываем левую модель */
+    }
+
+    .model-right {
+        display: block;
+        max-width: 100%;
+        max-height: 50vh;
+        margin: 0 auto;
+    }
+
+    .content {
+        margin-top: 20px; /* Отступ сверху для текста */
+        margin-bottom: 10px; /* Отступ снизу для кнопок */
+    }
+
+    h1 {
+        font-size: 1.8rem;
+        margin-bottom: 10px;
+    }
+
+    p {
+        font-size: 1rem;
+        margin-bottom: 10px;
+    }
+
+    .buttons {
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+    }
+
+    button {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+        width: 100%;
+    }
+}

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link id="page1-stylesheet" rel="stylesheet" href="page1.css">
+    <link id="page2-stylesheet" rel="stylesheet" href="page2.css" disabled>
+    <link id="page3-stylesheet" rel="stylesheet" href="page3.css" disabled>
+    <title>Explore 3D Game</title>
+</head>
+<body>
+    <!-- Первая страница -->
+    <section id="page1" class="page">
+        <div class="container">
+            <div class="model-left">
+                <img src="left.png" alt="Model Left">
+            </div>
+            <div class="model-right">
+                <img src="right.png" alt="Model Right">
+            </div>
+            <div class="content">
+                <h1>EXPLORE OUR INTRIGUING 3D GAME</h1>
+                <p>Instead and experience unparalleled pleasure like you've never seen before.</p>
+                <div class="buttons">
+                    <button class="btn no-thanks">NO, THANKS</button>
+                    <button class="btn continue" onclick="switchToPage2()">CONTINUE</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Вторая страница -->
+    <!-- Вторая страница -->
+<section id="page2" class="page" style="display: none;">
+    <div class="container">
+        <h1 class="title">Who Would You Choose as Your First Partner, if you play right now?</h1>
+        <div class="image-container" id="imageContainer">
+            <div class="arrow left-arrow" onclick="prevModel()">&#9664;</div>
+            <div class="image-frame">
+                <img id="modelImage" src="model1.png" alt="Model Image">
+            </div>
+            <div class="arrow right-arrow" onclick="nextModel()">&#9654;</div>
+        </div>
+        <button class="next-button" onclick="switchToPage3()">NEXT</button>
+    </div>
+</section>
+
+<!-- third page -->
+    <section id="page3" class="page" style="display: none;">
+        <div class="container">
+            <div class="model-left">
+                <img src="model4.png" alt="Model Left">
+            </div>
+            <div class="model-right">
+                <img src="model5.png" alt="Model Right">
+            </div>
+            <div class="content">
+                <h1>Warning</h1>
+                <p>You must be at least 18 years old and comfortable with mature topics to play the game.</p>
+                <div class="buttons">
+                    <button class="btn no-thanks">CONTINUE</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function switchToPage1() {
+    document.getElementById('page1-stylesheet').removeAttribute('disabled');
+    document.getElementById('page2-stylesheet').setAttribute('disabled', 'true');
+    document.getElementById('page1').style.display = 'block';
+    document.getElementById('page2').style.display = 'none';
+}
+
+function switchToPage2() {
+    document.getElementById('page1-stylesheet').setAttribute('disabled', 'true');
+    document.getElementById('page2-stylesheet').removeAttribute('disabled');
+    document.getElementById('page1').style.display = 'none';
+    document.getElementById('page2').style.display = 'block';
+}
+
+function switchToPage3() {
+            document.getElementById('page1-stylesheet').setAttribute('disabled', 'true');
+            document.getElementById('page2-stylesheet').setAttribute('disabled', 'true');
+            document.getElementById('page3-stylesheet').removeAttribute('disabled');
+            document.getElementById('page1').style.display = 'none';
+            document.getElementById('page2').style.display = 'none';
+            document.getElementById('page3').style.display = 'block';
+        }
+
+
+
+let models = ["model1.png", "model2.png", "model3.png"];
+let currentModelIndex = 0;
+
+function showModel(index) {
+  document.getElementById("modelImage").src = models[index];
+}
+
+function nextModel() {
+  currentModelIndex = (currentModelIndex + 1) % models.length;
+  showModel(currentModelIndex);
+}
+
+function prevModel() {
+  currentModelIndex = (currentModelIndex - 1 + models.length) % models.length;
+  showModel(currentModelIndex);
+}
+
+let isDragging = false;
+let startX;
+let currentX;
+
+const imageContainer = document.getElementById('imageContainer');
+
+imageContainer.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    startX = e.pageX;
+});
+
+imageContainer.addEventListener('mousemove', (e) => {
+    if (isDragging) {
+        currentX = e.pageX;
+        const diffX = startX - currentX;
+        
+        if (Math.abs(diffX) > 50) { 
+            if (diffX > 0) {
+                nextModel(); 
+            } else {
+                prevModel(); 
+            }
+            isDragging = false;
+        }
+    }
+});
+
+imageContainer.addEventListener('mouseup', () => {
+    isDragging = false;
+});
+
+imageContainer.addEventListener('mouseleave', () => {
+    isDragging = false;
+});
+
+imageContainer.addEventListener('touchstart', (e) => {
+    isDragging = true;
+    startX = e.touches[0].pageX;
+});
+
+imageContainer.addEventListener('touchmove', (e) => {
+    if (isDragging) {
+        currentX = e.touches[0].pageX;
+        const diffX = startX - currentX;
+        
+        if (Math.abs(diffX) > 50) { 
+            if (diffX > 0) {
+                nextModel(); 
+            } else {
+                prevModel(); 
+            }
+            isDragging = false;
+        }
+    }
+});
+
+imageContainer.addEventListener('touchend', () => {
+    isDragging = false;
+});
+    </script>
+</body>
+</html>

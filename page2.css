@@ -1,0 +1,140 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.container {
+    text-align: center;
+}
+
+.title {
+    background: linear-gradient(103.39deg, #FFE53B -32.17%, #FF2525 114.07%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent; 
+    font-weight: bold;
+    font-size: 3rem; 
+    position: relative;
+    -webkit-text-stroke: 1px #FFFFFF; 
+    text-stroke: 1px #FFFFFF; 
+}
+
+.image-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.arrow {
+    font-size: 36px;
+    cursor: pointer;
+    padding: 20px;
+    margin: 50px;
+    background: linear-gradient(103.39deg, #FFE53B -32.17%, #FF2525 114.07%);
+    border-radius: 50%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    transition: background-color 0.3s ease;
+}
+
+.arrow:hover {
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.image-frame {
+    width: 300px;
+    height: 300px;
+    border: 2px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-frame img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.next-button {
+    border-radius: 10px;
+    margin-top: 20px;
+    height: 3.2rem;
+    border-radius: .5rem;
+    width: 20rem;
+    padding: 10px 20px;
+    background: linear-gradient(103.39deg, #FFE53B -32.17%, #FF2525 114.07%);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.next-button:hover {
+    background-color: #0056b3;
+}
+
+
+
+@media (max-width: 768px) {
+    .title {
+        font-size: 36px;
+        margin-bottom: 15px;
+    }
+
+    .arrow {
+        font-size: 28px;
+        width: 50px;
+        height: 50px;
+        padding: 15px;
+    }
+
+    .image-frame {
+        width: 250px;
+        height: 250px;
+    }
+
+    .next-button {
+        width: 18rem;
+        height: 2.8rem;
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+
+    .arrow {
+        font-size: 24px;
+        width: 40px;
+        height: 40px;
+        padding: 10px;
+    }
+
+    .image-frame {
+        width: 200px;
+        height: 200px;
+    }
+
+    .next-button {
+        width: 16rem;
+        height: 2.5rem;
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+}
